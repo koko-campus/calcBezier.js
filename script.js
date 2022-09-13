@@ -31,13 +31,17 @@ class Bezier {
 		}
 		this.recursiveMain(dComponents, proportion, result);
 	}
-	// 「0.0」から「1.0」までを「0.1」刻みで実行
-	calc() {
-		const result = this.looper(this.fromAtoB(0, 1, 0.1), i => {
+	
+	calc(divide) {
+		const range = this.fromAtoB(0, 1, 1 / divide);
+		range.shift();
+		range.pop();
+		console.log(range);
+		const result = [[0, 0], ...this.looper(range, i => {
 			const answer = [];
-			this.recursiveMain([[0, 0], [0, 1], [1, 0], [1, 1]], i, answer);
+			this.recursiveMain(this.bezierPoints, i, answer);
 			return answer;
-		});
+		}), [1, 1]];
 		return result;
 	}
 }

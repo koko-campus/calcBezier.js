@@ -11,7 +11,9 @@
 const bezierInstance = new Bezier([[0, 0], [0, 1], [1, 0], [1, 1]]);
 
 // 「calc」メソッドでベジェ曲線上の点を算出します。
-bezierInstance.calc(割合);
+bezierInstance.calc(何等分するか);
+
+// 何等分するかについては、計算上誤差が生じる可能性があります。
 
 ```
 
@@ -19,8 +21,11 @@ bezierInstance.calc(割合);
 
 ```js
 
+// cubic-bezier(0, 1, 1, 0)
 const bezierInstance = new Bezier([[0, 0], [0, 1], [1, 0], [1, 1]]);
-bezierInstance.calc(0.1);
+
+// 「10」等分して出力
+bezierInstance.calc(10);
 
 
 /*
